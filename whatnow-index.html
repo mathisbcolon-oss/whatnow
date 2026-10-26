@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f7f7f2" />
+<meta name="description" content="Not sure what to do? WhatNow finds activities that fit your mood, time, budget, and company." />
+<title>WhatNow — Find your next thing</title>
+<style>
+:root{--bg:#f7f7f2;--ink:#19231d;--muted:#6b746e;--line:#e4e7df;--green:#c8f169;--green-dark:#2e4724;--card:#fff;--lav:#e9e5ff;--peach:#ffe3d4;--blue:#dceeff;--shadow:0 12px 35px rgba(25,35,29,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #83a83e;outline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;padding:24px 0}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-size:22px;font-weight:850;letter-spacing:-1px}.brandmark{width:36px;height:36px;border-radius:12px;background:var(--green);display:grid;place-items:center;font-size:20px}.nav{display:flex;align-items:center;gap:20px}.nav button{border:0;background:none;color:var(--muted);font-weight:650}.nav .saved{color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:10px 15px;background:#fff}
+.hero{padding:48px 0 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#51643c}.dot{width:8px;height:8px;border-radius:50%;background:#91b84a}.hero h1{font-size:clamp(46px,6.6vw,78px);line-height:.99;letter-spacing:-5px;margin:18px 0 18px;max-width:650px}.hero h1 span{background:var(--green);padding:0 9px 4px;border-radius:13px;display:inline-block;transform:rotate(-1.5deg)}.hero p{font-size:18px;color:var(--muted);max-width:480px;margin:0 0 25px}.primary{border:0;background:var(--ink);color:white;padding:14px 20px;border-radius:13px;font-weight:750;display:inline-flex;align-items:center;gap:10px;box-shadow:0 5px 0 rgba(25,35,29,.13);transition:transform .15s}.primary:hover{transform:translateY(-2px)}.hero-art{min-height:330px;position:relative;display:grid;place-items:center}.orb{width:min(330px,80%);aspect-ratio:1;border-radius:50%;background:var(--green);position:absolute;right:8%;top:3%;}.art-card{position:absolute;background:#fff;border:1px solid rgba(25,35,29,.08);border-radius:20px;padding:17px;box-shadow:var(--shadow);width:190px}.art-card strong{display:block;font-size:15px}.art-card small{color:var(--muted)}.art-card .emoji{font-size:28px;display:block;margin-bottom:9px}.art-one{left:3%;top:15%;transform:rotate(-7deg)}.art-two{right:0;top:43%;transform:rotate(6deg)}.art-three{left:15%;bottom:2%;transform:rotate(4deg);width:210px}.spark{position:absolute;font-size:32px}.spark.s1{right:10%;top:5%}.spark.s2{left:3%;bottom:10%}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:34px 0 16px}.section-heading h2{font-size:27px;letter-spacing:-1px;margin:0}.section-heading p{color:var(--muted);margin:4px 0 0}.pill-note{font-size:12px;font-weight:750;background:#edf2e6;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.planner{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow)}.field-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:10px}.choices{display:flex;flex-wrap:wrap;gap:8px}.choice{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px;font-weight:650;color:#525d55;transition:.15s}.choice:hover{border-color:#9cae8b}.choice.active{background:var(--green);border-color:var(--green);color:var(--ink)}.planner-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}.planner-bottom p{margin:0;color:var(--muted);font-size:13px}.planner-bottom .primary{white-space:nowrap}
+.results{padding:26px 0 60px}.results-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:17px}.results-head h2{margin:0;font-size:29px;letter-spacing:-1.3px}.results-head p{margin:4px 0 0;color:var(--muted)}.text-button{border:0;background:none;text-decoration:underline;text-underline-offset:4px;color:var(--muted);font-weight:700}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.activity{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-height:300px;transition:transform .2s,box-shadow .2s}.activity:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.card-top{height:112px;display:flex;align-items:center;justify-content:center;position:relative}.card-top .big-emoji{font-size:48px;filter:drop-shadow(0 5px 2px rgba(0,0,0,.07))}.card-top .tag{position:absolute;left:14px;top:13px;font-size:11px;font-weight:800;background:rgba(255,255,255,.82);padding:6px 9px;border-radius:999px}.fav{position:absolute;right:12px;top:12px;border:0;background:rgba(255,255,255,.85);border-radius:50%;width:34px;height:34px;font-size:18px;display:grid;place-items:center}.fav.on{background:#ffe6e6;color:#c04444}.card-body{padding:17px;display:flex;flex-direction:column;flex:1}.card-body h3{margin:0 0 6px;font-size:19px;letter-spacing:-.4px}.card-body p{margin:0;color:var(--muted);font-size:13px}.meta{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 15px}.meta span{background:#f1f3ee;border-radius:7px;padding:5px 8px;font-size:11px;font-weight:750;color:#536052}.start-link{margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:13px;font-size:13px;font-weight:800}.start-link span:last-child{font-size:20px}.empty{grid-column:1/-1;text-align:center;background:#fff;border:1px dashed #cfd6c7;border-radius:18px;padding:38px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:25px 0 35px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:30px}.hero-art{min-height:270px;max-width:500px;width:100%;margin:auto}.hero h1{letter-spacing:-3px}.field-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.section-heading{align-items:start;flex-direction:column}.planner{padding:20px}.planner-bottom{align-items:start;flex-direction:column}.planner-bottom .primary{width:100%;justify-content:center}}
+@media(max-width:520px){.wrap{width:min(100% - 28px,1120px)}header{padding:17px 0}.nav{gap:8px}.nav button{font-size:12px}.brand{font-size:20px}.hero h1{font-size:52px}.hero p{font-size:16px}.hero-art{min-height:240px}.art-card{width:155px;padding:13px}.art-three{width:175px}.cards{grid-template-columns:1fr}.activity{min-height:0}.card-top{height:125px}.results-head{align-items:start;flex-direction:column}.pill-note{white-space:normal}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#" aria-label="WhatNow home"><span class="brandmark">↗</span> whatnow</a>
+  <nav class="nav" aria-label="Main navigation">
+    <button id="howBtn">How it works</button>
+    <button class="saved" id="savedBtn">♡ Saved <span id="savedCount">0</span></button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Your next good idea is right here</div>
+    <h1>Not sure what<br>to <span>do next?</span></h1>
+    <p>Tell us your vibe, your time, and your budget. We'll find something worth doing.</p>
+    <button class="primary" id="jumpBtn">Find my next thing <span>↘</span></button>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="orb"></div><span class="spark s1">✳</span><span class="spark s2">✦</span>
+    <div class="art-card art-one"><span class="emoji">🪴</span><strong>Try something new</strong><small>Make today a little different</small></div>
+    <div class="art-card art-two"><span class="emoji">🚲</span><strong>Get out there</strong><small>A little adventure awaits</small></div>
+    <div class="art-card art-three"><span class="emoji">🎨</span><strong>Make something</strong><small>Good ideas start small</small></div>
+  </div>
+</section>
+
+<section id="plannerSection">
+  <div class="section-heading">
+    <div><h2>Let's find your kind of fun.</h2><p>A few quick picks. No overthinking required.</p></div>
+    <span class="pill-note">✦ Takes about 10 seconds</span>
+  </div>
+  <div class="planner">
+    <div class="field-grid">
+      <div class="field"><label>01 / What's your mood?</label><div class="choices" data-group="mood">
+        <button class="choice active" data-value="any">Surprise me</button><button class="choice" data-value="chill">Chill</button><button class="choice" data-value="active">Active</button><button class="choice" data-value="creative">Creative</button><button class="choice" data-value="productive">Productive</button>
+      </div></div>
+      <div class="field"><label>02 / How much time?</label><div class="choices" data-group="time">
+        <button class="choice active" data-value="any">Any time</button><button class="choice" data-value="15">15 min</button><button class="choice" data-value="30">30 min</button><button class="choice" data-value="60">1 hour+</button>
+      </div></div>
+      <div class="field"><label>03 / What's the budget?</label><div class="choices" data-group="budget">
+        <button class="choice active" data-value="any">Any budget</button><button class="choice" data-value="free">Free</button><button class="choice" data-value="low">Under $15</button><button class="choice" data-value="paid">I'm flexible</button>
+      </div></div>
+      <div class="field"><label>04 / Who's joining?</label><div class="choices" data-group="company">
+        <button class="choice active" data-value="any">Anyone</button><button class="choice" data-value="solo">Just me</button><button class="choice" data-value="friends">Friends</button><button class="choice" data-value="family">Family</button><button class="choice" data-value="partner">Two people</button>
+      </div></div>
+      <div class="field"><label>05 / Where do you want to be?</label><div class="choices" data-group="place">
+        <button class="choice active" data-value="any">Anywhere</button><button class="choice" data-value="home">At home</button><button class="choice" data-value="out">Out and about</button>
+      </div></div>
+      <div class="field"><label>06 / Want to try something new?</label><div class="choices" data-group="newness">
+        <button class="choice active" data-value="any">Either is fine</button><button class="choice" data-value="new">Something new</button><button class="choice" data-value="familiar">Keep it familiar</button>
+      </div></div>
+    </div>
+    <div class="planner-bottom"><p>We'll match your picks with activities you can actually do.</p><button class="primary" id="recommendBtn">Find my ideas <span>→</span></button></div>
+  </div>
+</section>
+
+<section class="results" id="resultsSection">
+  <div class="results-head"><div><h2 id="resultsTitle">A few ideas for you</h2><p id="resultsSubtitle">A little inspiration to get you going.</p></div><button class="text-button" id="shuffleBtn">↻ Give me different ideas</button></div>
+  <div class="cards" id="cards"></div>
+</section>
+</main>
+<footer><span>© 2026 WhatNow. A little help finding your next thing.</span><span>Made for the moments when you say “I don't know.”</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const activities = [
+{id:1,title:"Take a photo walk",desc:"Head outside and capture five things you usually walk past. Give yourself a tiny photo mission.",emoji:"📸",mood:["chill","active","creative"],mins:30,cost:"free",company:["solo","friends","partner","family"],place:"out",fresh:"new",tag:"Mini adventure",color:"#dceeff",steps:"Pick a route, set a 20–30 minute timer, and take photos of colors, shapes, or little details you notice."},
+{id:2,title:"Make a snack board",desc:"Turn whatever you have into a colorful snack plate. Bonus points for trying a new combo.",emoji:"🍓",mood:["chill","creative"],mins:15,cost:"free",company:["solo","friends","partner","family"],place:"home",fresh:"familiar",tag:"Easy win",color:"#ffe3d4",steps:"Check what you already have, choose three or four things, and arrange them on a plate like a tiny café."},
+{id:3,title:"Learn a 5-minute skill",desc:"Try a simple magic trick, paper fold, knot, or a new phrase in another language.",emoji:"🧠",mood:["creative","productive","chill"],mins:15,cost:"free",company:["solo","friends","family"],place:"home",fresh:"new",tag:"Learn something",color:"#e9e5ff",steps:"Choose one tiny skill, find a beginner tutorial, and practice it for five minutes. Show someone what you learned."},
+{id:4,title:"Have a mini game night",desc:"Pick a card game, board game, trivia round, or make up a silly challenge.",emoji:"🎲",mood:["chill","active"],mins:30,cost:"free",company:["friends","family","partner"],place:"home",fresh:"familiar",tag:"Together time",color:"#e8f3d8",steps:"Choose a game everyone knows or a quick trivia quiz. Keep it short and let the winner choose the next round."},
+{id:5,title:"Try a new recipe",desc:"Make one simple thing you haven't tried before using ingredients you already have.",emoji:"🥣",mood:["creative","productive","chill"],mins:60,cost:"low",company:["solo","friends","partner","family"],place:"home",fresh:"new",tag:"Make something",color:"#ffe9b8",steps:"Pick a beginner-friendly recipe, check the ingredients first, and make a small batch. Ask for help with hot tools if needed."},
+{id:6,title:"Reset one small space",desc:"Put on a favorite playlist and make one shelf, drawer, or desk feel fresh again.",emoji:"🧺",mood:["productive","chill"],mins:15,cost:"free",company:["solo"],place:"home",fresh:"familiar",tag:"Feel accomplished",color:"#dceeff",steps:"Choose one small area only. Set a 10-minute timer, put things where they belong, and stop when the timer ends."},
+{id:7,title:"Plan a local adventure",desc:"Find a nearby park, bookstore, market, or neighborhood you've never explored.",emoji:"🗺️",mood:["active","creative"],mins:60,cost:"free",company:["solo","friends","partner","family"],place:"out",fresh:"new",tag:"Explore nearby",color:"#e8f3d8",steps:"Choose a nearby place, check opening times and travel options, and make it a low-pressure visit. Ask a trusted adult if you need help getting there."},
+{id:8,title:"Build a playlist",desc:"Make a soundtrack for a mood, season, road trip, or a fictional movie.",emoji:"🎧",mood:["chill","creative"],mins:30,cost:"free",company:["solo","friends","partner"],place:"home",fresh:"new",tag:"Creative break",color:"#e9e5ff",steps:"Pick a theme and add 10 songs that fit it. Give the playlist a fun name and cover image."},
+{id:9,title:"Do a 10-minute movement break",desc:"Stretch, dance to three songs, or follow a gentle movement video you enjoy.",emoji:"🕺",mood:["active","chill"],mins:15,cost:"free",company:["solo","friends","family","partner"],place:"home",fresh:"familiar",tag:"Move a little",color:"#ffe3d4",steps:"Choose a comfortable movement break, keep it at your own pace, and stop or switch activities whenever you want."},
+{id:10,title:"Host a question night",desc:"Ask fun questions like dream trips, best memories, or what you'd invent if you could.",emoji:"💬",mood:["chill","creative"],mins:30,cost:"free",company:["friends","family","partner"],place:"home",fresh:"new",tag:"Get talking",color:"#dceeff",steps:"Take turns asking light, open-ended questions. Everyone can pass on any question and ask their own."},
+{id:11,title:"Make a tiny vision board",desc:"Collect images, colors, and words for something you want to learn, make, or experience.",emoji:"✂️",mood:["creative","productive"],mins:30,cost:"free",company:["solo","friends","family"],place:"home",fresh:"new",tag:"Dream it up",color:"#ffe9b8",steps:"Use paper or a digital collage. Pick one theme and add five images or words that inspire you."},
+{id:12,title:"Visit the library",desc:"Browse a section you never look at, pick a magazine, or find a book by its cover.",emoji:"📚",mood:["chill","productive"],mins:60,cost:"free",company:["solo","friends","family","partner"],place:"out",fresh:"new",tag:"Free discovery",color:"#e8f3d8",steps:"Check your local library's hours, then browse without a strict plan. Look for an event or a section you haven't explored."},
+{id:13,title:"Start a tiny project",desc:"Draw a room layout, make a paper model, design a logo, or improve something you use daily.",emoji:"🛠️",mood:["creative","productive"],mins:60,cost:"free",company:["solo","friends","family"],place:"home",fresh:"new",tag:"Make progress",color:"#dceeff",steps:"Pick a project you can start with supplies you already own. Define one small result you can finish today."},
+{id:14,title:"Go on a snack taste test",desc:"Compare a few snacks or drinks you already have and rate them like a real food critic.",emoji:"⭐",mood:["chill","creative"],mins:15,cost:"free",company:["friends","family","partner"],place:"home",fresh:"new",tag:"Silly but fun",color:"#ffe3d4",steps:"Choose three things already available, rate each on taste and texture, and make a very official winner list."},
+{id:15,title:"Watch a short documentary",desc:"Pick a topic you know nothing about and watch a short, interesting explainer.",emoji:"🌎",mood:["chill","productive"],mins:30,cost:"free",company:["solo","friends","family","partner"],place:"home",fresh:"new",tag:"Curiosity break",color:"#e9e5ff",steps:"Choose a topic like deep sea life, architecture, or space. Watch one short video and share one surprising fact."},
+{id:16,title:"Take a sunset or sky break",desc:"Step outside, notice the sky, and give yourself a few quiet minutes without scrolling.",emoji:"🌤️",mood:["chill"],mins:15,cost:"free",company:["solo","friends","partner","family"],place:"out",fresh:"familiar",tag:"Slow down",color:"#ffe9b8",steps:"Find a comfortable safe spot with a view of the sky. Leave your phone in your pocket for a few minutes."},
+{id:17,title:"Create a family quiz",desc:"Write a few trivia questions about movies, animals, music, or your family's favorite things.",emoji:"❓",mood:["creative","active"],mins:30,cost:"free",company:["friends","family","partner"],place:"home",fresh:"new",tag:"Group challenge",color:"#e8f3d8",steps:"Make 8–10 questions across a few topics. Take turns being the host and let everyone add a question."},
+{id:18,title:"Make a no-spend challenge",desc:"Find a fun way to spend the next hour using only things you already have.",emoji:"💡",mood:["productive","creative"],mins:60,cost:"free",company:["solo","friends","family","partner"],place:"home",fresh:"new",tag:"Budget friendly",color:"#dceeff",steps:"Choose a theme like create, learn, or organize. Set a one-hour timer and see what you can do without buying anything."},
+{id:19,title:"Try a beginner drawing prompt",desc:"Draw an object near you in a funny style. It doesn't need to be perfect.",emoji:"✏️",mood:["creative","chill"],mins:15,cost:"free",company:["solo","friends","family"],place:"home",fresh:"new",tag:"Creative reset",color:"#e9e5ff",steps:"Choose an object, set a 10-minute timer, and draw it as a cartoon, using only shapes, or with your non-dominant hand."},
+{id:20,title:"Find a community event",desc:"Look up a free public event, market, exhibit, or activity happening nearby.",emoji:"🎟️",mood:["active","creative"],mins:60,cost:"free",company:["solo","friends","partner","family"],place:"out",fresh:"new",tag:"Get out there",color:"#ffe3d4",steps:"Search a trusted local events calendar and confirm the time, cost, age guidance, and transport before heading out."},
+{id:21,title:"Do a kind surprise",desc:"Send a thoughtful message, make a card, or help someone with a small task.",emoji:"💌",mood:["chill","productive","creative"],mins:15,cost:"free",company:["solo","friends","family","partner"],place:"home",fresh:"new",tag:"Good energy",color:"#ffe3d4",steps:"Think of someone who might appreciate a kind gesture. Make it personal, simple, and pressure-free."}
+];
+const state={mood:"any",time:"any",budget:"any",company:"any",place:"any",newness:"any",savedOnly:false,shown:[],offset:0};
+const savedKey="whatnow-saved-v1";
+function getSaved(){try{return JSON.parse(localStorage.getItem(savedKey)||"[]")}catch(e){return []}}
+function setSaved(ids){try{localStorage.setItem(savedKey,JSON.stringify(ids))}catch(e){};document.getElementById("savedCount").textContent=ids.length}
+function showToast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>el.classList.remove("show"),2100)}
+document.querySelectorAll(".choices").forEach(group=>group.addEventListener("click",e=>{const btn=e.target.closest(".choice");if(!btn)return;group.querySelectorAll(".choice").forEach(b=>b.classList.remove("active"));btn.classList.add("active");state[group.dataset.group]=btn.dataset.value}));
+function matches(a){
+ if(state.mood!=="any"&&!a.mood.includes(state.mood))return false;
+ if(state.time!=="any"&&((state.time==="15"&&a.mins>15)||(state.time==="30"&&a.mins>30)||(state.time==="60"&&a.mins<60)))return false;
+ if(state.budget==="free"&&a.cost!=="free")return false;
+ if(state.budget==="low"&&a.cost==="paid")return false;
+ if(state.company!=="any"&&!a.company.includes(state.company))return false;
+ if(state.place!=="any"&&a.place!==state.place)return false;
+ if(state.newness!=="any"&&a.fresh!==state.newness)return false;
+ if(state.savedOnly&&!getSaved().includes(a.id))return false;
+ return true;
+}
+function render(){
+ const list=activities.filter(matches);const cards=document.getElementById("cards");cards.innerHTML="";
+ if(!list.length){cards.innerHTML='<div class="empty"><strong>No exact matches yet.</strong><br>Try changing one filter, or switch off Saved to see all ideas.</div>';document.getElementById("resultsTitle").textContent=state.savedOnly?"Your saved ideas":"Let's widen the search";document.getElementById("resultsSubtitle").textContent="A small change can open up more possibilities.";return}
+ const rotated=[...list.slice(state.offset%list.length),...list.slice(0,state.offset%list.length)];
+ const chosen=rotated.slice(0,3);state.shown=chosen.map(a=>a.id);
+ document.getElementById("resultsTitle").textContent=state.savedOnly?"Your saved ideas":state.mood==="any"?"A few ideas for you":"Picked for your "+state.mood+" mood";
+ document.getElementById("resultsSubtitle").textContent=state.savedOnly?"Keep your favorites close for next time.":"Here are three ideas that fit your picks. Pick one and get started.";
+ const saved=getSaved();
+ chosen.forEach(a=>{const card=document.createElement("article");card.className="activity";card.innerHTML=`<div class="card-top" style="background:${a.color}"><span class="tag">${a.tag}</span><span class="big-emoji">${a.emoji}</span><button class="fav ${saved.includes(a.id)?"on":""}" aria-label="${saved.includes(a.id)?"Remove from":"Save to"} favorites" title="${saved.includes(a.id)?"Remove saved activity":"Save activity"}">${saved.includes(a.id)?"♥":"♡"}</button></div><div class="card-body"><h3>${a.title}</h3><p>${a.desc}</p><div class="meta"><span>◷ ${a.mins} min</span><span>${a.cost==="free"?"$ Free":a.cost==="low"?"$ Under $15":"$ Flexible"}</span><span>${a.place==="home"?"At home":"Out and about"}</span></div><div class="start-link"><span>How to get started</span><span>↗</span></div></div>`;
+ card.querySelector(".fav").addEventListener("click",()=>{let ids=getSaved();if(ids.includes(a.id)){ids=ids.filter(id=>id!==a.id);showToast("Removed from saved ideas")}else{ids.push(a.id);showToast("Saved for later")}setSaved(ids);render()});
+ card.querySelector(".start-link").addEventListener("click",()=>openActivity(a));cards.appendChild(card)});
+}
+function openActivity(a){const modal=document.createElement("div");modal.style.cssText="position:fixed;inset:0;background:rgba(16,24,18,.55);z-index:20;display:grid;place-items:center;padding:18px";modal.innerHTML=`<div role="dialog" aria-modal="true" aria-label="${a.title}" style="max-width:480px;width:100%;background:#fff;border-radius:22px;padding:26px;box-shadow:0 20px 80px #0003;position:relative"><button aria-label="Close" style="position:absolute;right:18px;top:15px;border:0;background:#f0f2ec;border-radius:50%;width:34px;height:34px;font-size:20px">×</button><div style="font-size:48px;margin-bottom:8px">${a.emoji}</div><div style="font-size:11px;font-weight:850;letter-spacing:1px;color:#66735c;text-transform:uppercase">${a.tag} · ${a.mins} min</div><h2 style="font-size:29px;letter-spacing:-1px;margin:7px 0 10px">${a.title}</h2><p style="color:#6b746e;margin:0 0 20px">${a.desc}</p><h3 style="font-size:15px;margin:0 0 7px">Your first steps</h3><p style="margin:0 0 22px;line-height:1.7">${a.steps}</p><button class="primary done" style="width:100%;justify-content:center">Sounds good, let's do it ✓</button></div>`;
+ const close=()=>modal.remove();modal.addEventListener("click",e=>{if(e.target===modal||e.target.closest('[aria-label="Close"]')||e.target.closest(".done"))close()});document.body.appendChild(modal);modal.querySelector(".done").focus()}
+document.getElementById("recommendBtn").addEventListener("click",()=>{state.savedOnly=false;state.offset=0;render();document.getElementById("resultsSection").scrollIntoView({behavior:"smooth",block:"start"})});
+document.getElementById("shuffleBtn").addEventListener("click",()=>{state.offset+=3;render()});
+document.getElementById("jumpBtn").addEventListener("click",()=>document.getElementById("plannerSection").scrollIntoView({behavior:"smooth"}));
+document.getElementById("savedBtn").addEventListener("click",()=>{state.savedOnly=!state.savedOnly;state.offset=0;document.getElementById("savedBtn").innerHTML=state.savedOnly?'♥ Saved <span id="savedCount">'+getSaved().length+'</span>':'♡ Saved <span id="savedCount">'+getSaved().length+'</span>';render();document.getElementById("resultsSection").scrollIntoView({behavior:"smooth"})});
+document.getElementById("howBtn").addEventListener("click",()=>{document.getElementById("plannerSection").scrollIntoView({behavior:"smooth"});showToast("Pick what fits your moment. We'll do the rest.")});
+setSaved(getSaved());render();
+</script>
+</body>
+</html>
